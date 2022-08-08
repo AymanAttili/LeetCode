@@ -7,12 +7,12 @@ public:
             return dp[i]=cost[i];
         if(dp[i])
             return dp[i];
-        
+        if(i==cost.size())
+            return min(sol(i-1,cost),sol(i-2,cost));
         return dp[i]=cost[i]+min(sol(i-1,cost),sol(i-2,cost));
     }
     
     int minCostClimbingStairs(vector<int>& cost) {
-        cost.push_back(0);
-        return sol(cost.size()-1,cost);
+        return sol(cost.size(),cost);
     }
 };
